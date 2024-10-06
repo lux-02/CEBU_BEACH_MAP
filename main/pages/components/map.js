@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const MapComponent = ({ paths = [0, 0] }) => {
+const MapComponent = () => {
   const GoogleMapKey = process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY;
 
   useEffect(() => {
@@ -66,11 +66,15 @@ const MapComponent = ({ paths = [0, 0] }) => {
           elementType: "geometry",
           stylers: [{ color: "#222222" }],
         },
+        {
+          featureType: "water",
+          stylers: [{ color: "#111122" }],
+        },
       ];
 
       const map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: 10.3, lng: 123.5 },
-        zoom: 8,
+        center: { lat: 10.3, lng: 124 },
+        zoom: 12.5,
         styles: grayscaleStyle,
         disableDefaultUI: true,
       });
@@ -79,7 +83,7 @@ const MapComponent = ({ paths = [0, 0] }) => {
     loadGoogleMapsScript(initMap);
   });
 
-  return <div id="map" style={{ height: "400px", width: "100%" }} />;
+  return <div id="map" style={{ height: "600px", width: "100%" }} />;
 };
 
 export default MapComponent;
